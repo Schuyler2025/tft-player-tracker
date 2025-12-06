@@ -1,0 +1,24 @@
+# Core dependencies
+requests==2.31.0
+python-dotenv==1.0.0
+redis==5.0.1
+APScheduler==3.10.4
+
+# Database
+SQLAlchemy==2.0.23
+
+# Discord integration
+discord.py==2.3.2
+
+# WeChat integration (optional)
+wechatpy==1.8.18
+
+# Data validation
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# Logging
+loguru==0.7.2
+
+# HTTP client with retry
+tenacity==8.2.3

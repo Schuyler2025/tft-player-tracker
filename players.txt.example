@@ -1,0 +1,15 @@
+# 选手列表示例
+# 格式: GameName#TagLine
+# 一行一个选手
+
+# 北美选手
+doublelift#NA1
+dishsoap#NA1
+
+# 韩服选手
+# faker#KR
+# showmaker#KR
+
+# 欧服选手
+# rekkles#EUW
+# caps#EUW
