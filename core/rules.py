@@ -101,6 +101,17 @@ class LPThresholdRule(NotificationRule):
         if not settings.enable_lp_threshold_notification:
             return False
         
+        # 检查段位是否发生变动
+        old_tier = old_data.get('tier')
+        new_tier = new_data.get('tier')
+        old_rank = old_data.get('rank')
+        new_rank = new_data.get('rank')
+        
+        # 段位变动时（晋升/降级），LP变化是正常的，不应触发LP波动通知
+        if old_tier != new_tier or old_rank != new_rank:
+            return False
+        
+        # 只有在段位不变的情况下，才检查LP波动
         old_lp = old_data.get('league_points', 0)
         new_lp = new_data.get('league_points', 0)
         lp_change = abs(new_lp - old_lp)

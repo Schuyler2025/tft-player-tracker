@@ -1,58 +1,133 @@
-# TFT Player Tracker - 云顶之弈选手Rank追踪系统
+# TFT Player Tracker 🎮
 
-## 核心功能
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](docker-compose.yml)
 
-- ✅ **实时追踪**：分钟级同步选手Rank数据（段位、LP、胜率）
-- ✅ **智能推送**：LP波动±50、段位变动自动通知
-- ✅ **多渠道支持**：Discord、微信推送
-- ✅ **合规设计**：基于Riot官方API
+一个功能丰富的云顶之弈（Teamfight Tactics）选手Rank追踪系统，支持实时监控选手段位变化并通过多种渠道推送通知。
 
-## 快速开始
+## ✨ 核心特性
 
-### 1. 安装依赖
+- **🔍 实时追踪** - 分钟级同步选手Rank数据（段位、LP、胜率）
+- **📊 智能通知** - 基于规则的自动推送系统
+- **🌐 多平台支持** - Discord、微信等多渠道通知
+- **⚡ 高性能** - 异步架构，支持高并发处理
+- **🐳 容器化** - 完整的Docker支持，一键部署
+- **🔒 合规设计** - 严格遵守Riot API限制和速率控制
+
+## 🚀 快速开始
+
+### 环境要求
+
+- Python 3.10+
+- Redis (可选，推荐用于生产环境)
+
+### 安装步骤
+
+1. **克隆项目**
+   
+   ```bash
+   git clone https://github.com/your-username/tft-player-tracker.git
+   cd tft-player-tracker
+   ```
+
+2. **安装依赖**
+   
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **配置环境变量**
+   
+   ```bash
+   cp .env.example .env
+   # 编辑 .env 文件，填入你的Riot API密钥
+   ```
+
+4. **运行程序**
+   
+   ```bash
+   python main.py
+   ```
+
+### Docker部署（推荐）
 
 ```bash
-pip install -r requirements.txt
+# 一键启动（包含Redis）
+docker-compose up -d
+
+# 查看日志
+docker-compose logs -f app
 ```
 
-### 2. 配置环境变量
+## 📋 功能列表
 
-```bash
-cp .env.example .env
-# 编辑 .env 填入你的API密钥
+### 追踪功能
+
+- ✅ 实时监控选手段位变化
+- ✅ LP波动检测（可配置阈值）
+- ✅ 胜率统计和历史记录
+- ✅ 多赛区支持（全球所有Riot服务器）
+
+### 通知规则
+
+- 🎯 **段位变动** - 钻石→大师、大师→宗师等
+- 📈 **LP大幅波动** - 单局增减≥50LP
+- 📊 **每日累计变动** - 可选功能
+
+### 通知渠道
+
+- 💬 **Discord** - 精美的Embed消息格式
+- 📱 **微信** - 企业微信群机器人/公众号模板消息
+
+## ⚙️ 配置说明
+
+### 必需配置
+
+```env
+RIOT_API_KEY=your_riot_api_key
+RIOT_API_REGION=na1
 ```
 
-### 3. 运行程序
+### 可选配置
 
-```bash
-python main.py
+```env
+# Discord通知
+DISCORD_BOT_TOKEN=your_bot_token
+DISCORD_CHANNEL_ID=your_channel_id
+
+# 通知规则
+LP_CHANGE_THRESHOLD=50
+POLLING_INTERVAL=120
+
+# Redis缓存
+REDIS_HOST=localhost
+REDIS_PORT=6379
 ```
 
-## 架构说明
+## 🎮 使用方法
 
-```
-├── config/          # 配置管理
-├── core/            # 核心业务逻辑
-│   ├── riot_api.py  # Riot API封装
-│   ├── tracker.py   # 追踪引擎
-│   └── rules.py     # 推送规则引擎
-├── database/        # 数据层
-│   ├── models.py    # 数据模型
-│   └── cache.py     # Redis缓存
-├── notifiers/       # 推送层
-│   ├── discord.py   # Discord推送
-│   └── wechat.py    # 微信推送
-└── utils/           # 工具函数
-```
+### 交互式操作
 
-## 推送规则
+运行 `python main.py` 后选择：
 
-支持以下触发条件：
+- **1. 启动追踪服务** - 开始实时监控
+- **2. 添加追踪选手** - 交互式添加新选手
+- **3. 查看选手历史** - 查看历史Rank记录
+- **4. 退出程序**## 🤝 贡献指南
 
-1. **段位变动**：钻石→大师、大师1→宗师等
-2. **LP波动**：单局增减≥50、单日累计≥100
-3. **关键节点**：晋级赛开启/结束
+欢迎提交Issue和Pull Request！请确保：
 
-## License
+1. 代码符合PEP8规范
+2. 添加适当的测试用例
+3. 更新相关文档
 
-MIT
+## 📄 许可证
+
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+
+## 🙏 致谢
+
+- [Riot Games API](https://developer.riotgames.com/) - 提供官方数据接口
+- [Discord.py](https://github.com/Rapptz/discord.py) - Discord Bot框架
+- [SQLAlchemy](https://www.sqlalchemy.org/) - 数据库ORM

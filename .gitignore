@@ -33,3 +33,8 @@ Thumbs.db
 # Cache
 .cache/
 *.pid
+
+
+QUICKSTART.md
+PROJECT.md
+README1.md
