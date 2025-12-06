@@ -6,12 +6,15 @@
 
 一个功能丰富的云顶之弈（Teamfight Tactics）选手Rank追踪系统，支持实时监控选手段位变化并通过多种渠道推送通知。
 
+<div align="center">
+  <img  src="demo.jpeg" alt="Version 1.0.0">
+</div>
+
 ## ✨ 核心特性
 
 - **🔍 实时追踪** - 分钟级同步选手Rank数据（段位、LP、胜率）
 - **📊 智能通知** - 基于规则的自动推送系统
 - **🌐 多平台支持** - Discord、微信等多渠道通知
-- **⚡ 高性能** - 异步架构，支持高并发处理
 - **🐳 容器化** - 完整的Docker支持，一键部署
 - **🔒 合规设计** - 严格遵守Riot API限制和速率控制
 
@@ -131,3 +134,7 @@ REDIS_PORT=6379
 - [Riot Games API](https://developer.riotgames.com/) - 提供官方数据接口
 - [Discord.py](https://github.com/Rapptz/discord.py) - Discord Bot框架
 - [SQLAlchemy](https://www.sqlalchemy.org/) - 数据库ORM
+
+---
+
+**如果这个项目对你有帮助，请给个⭐️Star支持一下！**
